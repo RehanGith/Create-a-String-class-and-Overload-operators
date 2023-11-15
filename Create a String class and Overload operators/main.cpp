@@ -6,11 +6,12 @@ int main() {
 	String s { "muhammad Rehan" };
 	char arr[]{ "Rehan" };
 	String s1(arr);
-	s1.display();
-	s.display();
+	cout << s1 << " and " << s << endl;
 	String s2(s1);
-	s2.display();
+	cout << s2 << endl;
 	s = s1;
-	s.display();
+	cout << s << endl;
+	cin >> s;
+	cout << s;
 	return 0;
 }

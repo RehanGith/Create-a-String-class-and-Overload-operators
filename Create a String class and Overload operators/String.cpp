@@ -26,7 +26,7 @@ String::String(const String& source)
 	strcpy_s(str, size, source.str);
 }
 //Move copy assignment operator
-String::String(String&& source)
+String::String(String&& source) noexcept
 	: str(source.str) {
 	source.str = nullptr;
 }
@@ -41,7 +41,7 @@ String String::operator=(const String& source) {
 	return *this;
 }
 // Move Assignment operator
-String String::operator=(String&& source) {
+String String::operator=(String&& source) noexcept {
 	if (this == &source)
 		return *this;
 	delete[] str;
@@ -50,7 +50,17 @@ String String::operator=(String&& source) {
 	strcpy_s(str, size, source.str);
 	return *this;
 }
-
+std::ostream &operator<<(std::ostream &os, const String &source) {
+	os << source.str;
+	return os;
+}
+std::istream& operator>>(std::istream& is, String& source) {
+	char* buff = new char[100];
+	is >> buff;
+	source = String { buff };
+	delete [] buff;
+	return is;
+}
 void String::display() const {
 	std::cout << str << std::endl;
 }
