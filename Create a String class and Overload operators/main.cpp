@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-	String s;
+	String s { "muhammad Rehan" };
 	char arr[]{ "Rehan" };
 	String s1(arr);
 	s1.display();
