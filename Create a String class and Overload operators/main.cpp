@@ -10,5 +10,7 @@ int main() {
 	s.display();
 	String s2(s1);
 	s2.display();
+	s = s1;
+	s.display();
 	return 0;
 }

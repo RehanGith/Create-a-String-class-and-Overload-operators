@@ -24,6 +24,15 @@ String::String(const String& source)
 	str = new char[size];
 	strcpy_s(str, size, source.str);
 }
+String String::operator=(const String& source) {
+	if (source.str == nullptr)
+		return *this;
+	delete[] str;
+	size_t size = std::strlen(source.str) + 1;
+	str = new char[size];
+	strcpy_s(str, size, source.str);
+	return *this;
+}
 void String::display() const {
 	std::cout << str << std::endl;
 }
